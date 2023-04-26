@@ -46,7 +46,8 @@ while number_loop == 1:
 
     #   - getting site
     print("\nPegando seus dados na nuvem...")
-    response = requests.get(f'https://www.{urls[option_select]}')
+    headers = {'User-Agent': 'Chrome/39.0.2171.95'}
+    response = requests.get(f'https://www.{urls[option_select]}', headers=headers)
     print("Ok, tudo certo, dados pegos com sucesso!\nSalvando os dados...")
     file_html = response.content
 
