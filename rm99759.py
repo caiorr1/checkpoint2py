@@ -10,13 +10,12 @@ def remove_com(enumerated_url):
     url_sem_com = url.split(".")[0]
     return f"{index + 1} - {url_sem_com.capitalize()}"
 
-# code
-#   - variables
+
 is_valid = False
 insert_rm = None
 option_select = None
 
-#   - get RM
+
 while not is_valid:
     insert_rm = input('\nDigite os números do seu RM (Ex.:123456): ')
 
@@ -28,13 +27,13 @@ while not is_valid:
 number_loop = 1
 while number_loop == 1:
 
-    #   - getting options and turning options into string
+   
     is_valid = False
     urls = jsonFile[insert_rm]
     result_array = list(map(remove_com, enumerate(urls)))
     result_string = "\n".join(result_array)
 
-    #   - getting selected option
+    
     while not is_valid:
         print("\nEssas são suas opções:")
         print(result_string)
@@ -45,7 +44,7 @@ while number_loop == 1:
         else:
             print("\nPor favor, escolha uma opção válida.")
 
-    #   - getting site
+    
     print("\nPegando seus dados na nuvem...")
     headers = {'User-Agent': 'Chrome/39.0.2171.95'}
     response = requests.get(f'https://www.{urls[option_select]}', headers=headers)
@@ -56,7 +55,7 @@ while number_loop == 1:
         os.mkdir("files")
 
 
-    #   - saving file
+    
     name_html = urls[option_select].split(".")[0]
     with open('./files/' + name_html + '.html', 'w') as file_site:
         file_site.write(str(file_html))
