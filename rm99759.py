@@ -1,5 +1,6 @@
 import json
 import requests
+import os
 
 with open('./files/base_tdspy.json') as file:
     jsonFile = json.load(file)
@@ -50,6 +51,9 @@ while number_loop == 1:
     response = requests.get(f'https://www.{urls[option_select]}', headers=headers)
     print("Ok, tudo certo, dados pegos com sucesso!\nSalvando os dados...")
     file_html = response.content
+
+    if not os.path.exist("files"):
+        os.mkdir("files")
 
 
     #   - saving file
